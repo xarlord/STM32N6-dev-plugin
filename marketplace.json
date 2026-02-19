@@ -1,0 +1,248 @@
+{
+  "$schema": "https://claude.ai/schema/marketplace.json",
+  "id": "stm32n6-dev-plugin",
+  "name": "STM32N6 Development Plugin",
+  "version": "1.0.0",
+  "description": "Comprehensive Claude Code plugin for STM32N6570-DK development with MCP server, specialized agents, and embedded AI tools",
+  "shortDescription": "STM32N6 embedded development with Neural-ART NPU support",
+  "author": {
+    "name": "xarlord",
+    "url": "https://github.com/xarlord"
+  },
+  "publisher": "xarlord",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xarlord/STM32N6-dev-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xarlord/STM32N6-dev-plugin/issues"
+  },
+  "homepage": "https://github.com/xarlord/STM32N6-dev-plugin#readme",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#1a1a2e",
+    "theme": "dark"
+  },
+  "categories": [
+    "Programming Languages",
+    "Debuggers",
+    "Other"
+  ],
+  "keywords": [
+    "stm32",
+    "stm32n6",
+    "embedded",
+    "microcontroller",
+    "cortex-m55",
+    "neural-art",
+    "npu",
+    "edge-ai",
+    "mcp",
+    "mcu",
+    "arm",
+    "freeertos",
+    "debugging",
+    "iot"
+  ],
+  "engines": {
+    "claude-code": ">=1.0.0"
+  },
+  "platforms": [
+    "win32",
+    "darwin",
+    "linux"
+  ],
+  "capabilities": {
+    "mcp": true,
+    "commands": true,
+    "skills": true,
+    "agents": true,
+    "hooks": true,
+    "templates": true
+  },
+  "mcpServers": {
+    "stm32n6-dev": {
+      "command": "node",
+      "args": ["stm32n6-dev-server/dist/index.js"],
+      "description": "STM32N6 Development MCP Server",
+      "tools": [
+        "stm32_build",
+        "stm32_flash",
+        "stm32_debug",
+        "peripheral_config",
+        "clock_config",
+        "model_convert",
+        "model_quantize",
+        "trace_analyze",
+        "register_inspect",
+        "memory_map"
+      ]
+    }
+  },
+  "commands": [
+    {
+      "command": "/build",
+      "description": "Build STM32N6 project"
+    },
+    {
+      "command": "/flash",
+      "description": "Flash firmware to target device"
+    },
+    {
+      "command": "/debug",
+      "description": "Start debug session"
+    },
+    {
+      "command": "/peripheral",
+      "description": "Configure peripheral drivers"
+    },
+    {
+      "command": "/clock",
+      "description": "Clock configuration wizard"
+    },
+    {
+      "command": "/model",
+      "description": "ML model operations"
+    },
+    {
+      "command": "/test",
+      "description": "Run tests"
+    },
+    {
+      "command": "/analyze",
+      "description": "Analyze trace/performance data"
+    }
+  ],
+  "skills": [
+    {
+      "name": "project-init",
+      "description": "Initialize new STM32N6 project"
+    },
+    {
+      "name": "driver-create",
+      "description": "Generate peripheral driver"
+    },
+    {
+      "name": "rtos-setup",
+      "description": "Configure FreeRTOS"
+    },
+    {
+      "name": "model-deploy",
+      "description": "Deploy ML model to Neural-ART"
+    },
+    {
+      "name": "debug-session",
+      "description": "Start interactive debug session"
+    },
+    {
+      "name": "bsp-configure",
+      "description": "Configure Board Support Package"
+    },
+    {
+      "name": "filesystem-setup",
+      "description": "Set up FATFS/LittleFS"
+    },
+    {
+      "name": "clock-wizard",
+      "description": "Interactive clock configuration"
+    }
+  ],
+  "agents": [
+    {
+      "name": "project-lead",
+      "description": "Workflow orchestration and coordination"
+    },
+    {
+      "name": "stm32-architect",
+      "description": "System design, memory layout, clocks"
+    },
+    {
+      "name": "driver-developer",
+      "description": "Peripheral drivers (I2C, SPI, UART, CAN)"
+    },
+    {
+      "name": "ai-engineer",
+      "description": "Neural-ART NPU and model deployment"
+    },
+    {
+      "name": "rtos-specialist",
+      "description": "FreeRTOS configuration and tasks"
+    },
+    {
+      "name": "debug-engineer",
+      "description": "GDB, SWV, ETM trace analysis"
+    },
+    {
+      "name": "test-engineer",
+      "description": "Unity framework, code coverage"
+    }
+  ],
+  "hardware": {
+    "target": "STM32N6570-DK",
+    "vendor": "STMicroelectronics",
+    "specs": {
+      "cpu": "ARM Cortex-M55 @ 800 MHz",
+      "npu": "Neural-ART @ 1 GHz (600 GOPS)",
+      "gpu": "NeoChrom Accelerator",
+      "ram": "4.2 MB",
+      "flash": "2 MB",
+      "security": "SESIP Level 3, PSA Level 3"
+    }
+  },
+  "requirements": {
+    "node": ">=18.0.0",
+    "optional": [
+      {
+        "name": "STM32CubeIDE",
+        "description": "For CubeIDE project support"
+      },
+      {
+        "name": "GCC ARM Toolchain",
+        "description": "For building projects"
+      },
+      {
+        "name": "STM32CubeProgrammer",
+        "description": "For flashing targets"
+      },
+      {
+        "name": "ST-Link or J-Link",
+        "description": "Debug probe for flashing/debugging"
+      }
+    ]
+  },
+  "installation": {
+    "type": "git",
+    "url": "https://github.com/xarlord/STM32N6-dev-plugin.git",
+    "postInstall": "cd stm32n6-dev-server && npm install && npm run build"
+  },
+  "statistics": {
+    "tests": 186,
+    "testPassRate": "100%",
+    "coverage": "86.62%",
+    "tools": 10,
+    "agents": 7,
+    "commands": 8,
+    "skills": 8
+  },
+  "badges": [
+    {
+      "url": "https://img.shields.io/badge/version-1.0.0-blue.svg",
+      "description": "Version"
+    },
+    {
+      "url": "https://img.shields.io/badge/tests-186%20passing-brightgreen.svg",
+      "description": "Tests"
+    },
+    {
+      "url": "https://img.shields.io/badge/coverage-86.62%25-green.svg",
+      "description": "Coverage"
+    },
+    {
+      "url": "https://img.shields.io/badge/license-MIT-green.svg",
+      "description": "License"
+    }
+  ],
+  "changelog": "https://github.com/xarlord/STM32N6-dev-plugin/releases",
+  "readme": "https://github.com/xarlord/STM32N6-dev-plugin#readme"
+}
