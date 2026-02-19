@@ -4,8 +4,24 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-186%20passing-brightgreen.svg)]()
 [![Coverage](https://img.shields.io/badge/coverage-86.62%25-green.svg)]()
+[![GitHub release](https://img.shields.io/github/release/xarlord/STM32N6-dev-plugin.svg)](https://github.com/xarlord/STM32N6-dev-plugin/releases/latest)
 
 A comprehensive Claude Code plugin for developing software on the **STM32N6570-DK** evaluation board, featuring MCP server integration, specialized agents, and tools for embedded AI development.
+
+## Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/xarlord/STM32N6-dev-plugin.git
+cd STM32N6-dev-plugin/stm32n6-dev-server
+
+# Install dependencies and build
+npm install
+npm run build
+
+# Add to Claude Code
+claude mcp add stm32n6-dev -- node $(pwd)/dist/index.js
+```
 
 ## Features
 
@@ -173,3 +189,14 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 - [GitHub Issues](https://github.com/xarlord/STM32N6-dev-plugin/issues)
 - [Documentation](https://github.com/xarlord/STM32N6-dev-plugin/tree/main/docs)
+- [Changelog](CHANGELOG.md)
+
+## Roadmap
+
+See [task_plan.md](task_plan.md) for planned features and development status.
+
+## Acknowledgments
+
+- Built with [MCP SDK](https://github.com/modelcontextprotocol/sdk)
+- Inspired by STM32CubeIDE and ST Edge AI Suite
+- Target hardware: [STM32N6570-DK](https://www.st.com/en/evaluation-tools/stm32n6570-dk.html)
