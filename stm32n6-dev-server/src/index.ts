@@ -106,8 +106,9 @@ export class STM32N6DevServer {
       try {
         // Execute pre-hooks
         const preResult = await this.context.hooks.execute('pre', 'tool', name, {
-          params: args,
-          context: this.context,
+          params: args ?? {},
+          environment: process.env as Record<string, string>,
+          projectPath: process.cwd(),
         });
 
         if (!preResult.proceed) {
@@ -131,11 +132,13 @@ export class STM32N6DevServer {
 
         // Execute post-hooks
         await this.context.hooks.execute('post', 'tool', name, {
-          params: args,
+          params: args ?? {},
           result,
-          context: this.context,
+          environment: process.env as Record<string, string>,
+          projectPath: process.cwd(),
         });
 
+        const typedResult = result as { success?: boolean };
         return {
           content: [
             {
@@ -143,7 +146,7 @@ export class STM32N6DevServer {
               text: JSON.stringify(result, null, 2),
             },
           ],
-          isError: result.success === false,
+          isError: typedResult.success === false,
         };
       } catch (error) {
         const errorMessage = error instanceof Error ? error.message : String(error);

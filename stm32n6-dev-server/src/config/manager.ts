@@ -3,7 +3,6 @@
  */
 
 import { z } from 'zod';
-import type { STM32N6Config, DebugProbe, DebugInterface, BuildType, QuantizationScheme } from '../types/index.js';
 
 // Configuration schema
 const ConfigSchema = z.object({
@@ -133,13 +132,19 @@ export class ConfigManager {
     if (process.env['STM32N6_LOG_LEVEL']) {
       const level = process.env['STM32N6_LOG_LEVEL'] as 'debug' | 'info' | 'warn' | 'error';
       if (['debug', 'info', 'warn', 'error'].includes(level)) {
-        config.server = { ...config.server, logLevel: level };
+        config.server = {
+          logLevel: level,
+          timeout: config.server?.timeout ?? 60000,
+        };
       }
     }
     if (process.env['STM32N6_TIMEOUT']) {
       const timeout = parseInt(process.env['STM32N6_TIMEOUT'], 10);
       if (!isNaN(timeout)) {
-        config.server = { ...config.server, timeout };
+        config.server = {
+          logLevel: config.server?.logLevel ?? 'info',
+          timeout,
+        };
       }
     }
 
