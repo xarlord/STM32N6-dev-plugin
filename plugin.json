@@ -1,0 +1,88 @@
+{
+  "name": "stm32n6-dev-plugin",
+  "version": "1.0.0",
+  "description": "Claude Code plugin for STM32N6570-DK development with MCP server, specialized agents, and tools",
+  "author": "xarlord",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xarlord/STM32N6-dev-plugin"
+  },
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "plugin",
+    "stm32",
+    "stm32n6",
+    "embedded",
+    "mcu",
+    "cortex-m55",
+    "neural-art",
+    "edge-ai",
+    "mcp-server"
+  ],
+  "categories": [
+    "embedded",
+    "development",
+    "ai-ml"
+  ],
+  "engines": {
+    "claude-code": ">=1.0.0"
+  },
+  "mcp": {
+    "servers": {
+      "stm32n6-dev": {
+        "command": "node",
+        "args": ["stm32n6-dev-server/dist/index.js"],
+        "description": "STM32N6 Development MCP Server"
+      }
+    }
+  },
+  "commands": [
+    "/build",
+    "/flash",
+    "/debug",
+    "/peripheral",
+    "/clock",
+    "/model",
+    "/test",
+    "/analyze"
+  ],
+  "skills": [
+    "project-init",
+    "driver-create",
+    "rtos-setup",
+    "model-deploy",
+    "debug-session",
+    "bsp-configure",
+    "filesystem-setup",
+    "clock-wizard"
+  ],
+  "agents": [
+    "project-lead",
+    "stm32-architect",
+    "driver-developer",
+    "ai-engineer",
+    "rtos-specialist",
+    "debug-engineer",
+    "test-engineer"
+  ],
+  "tools": [
+    "stm32_build",
+    "stm32_flash",
+    "stm32_debug",
+    "peripheral_config",
+    "clock_config",
+    "model_convert",
+    "model_quantize",
+    "trace_analyze",
+    "register_inspect",
+    "memory_map"
+  ],
+  "hardware": {
+    "target": "STM32N6570-DK",
+    "cpu": "Cortex-M55 @ 800MHz",
+    "npu": "Neural-ART @ 1GHz (600 GOPS)",
+    "gpu": "NeoChrom Accelerator",
+    "ram": "4.2 MB"
+  }
+}
